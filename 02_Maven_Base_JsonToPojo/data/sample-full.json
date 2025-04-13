@@ -10,6 +10,5 @@
 		"zip": "560026",
 		"country": "IND"
 	},
-	"languages" : ["Java", "C#", "Python", "Javascript"],
-	"Company":"MI"	
+	"languages" : ["Java", "C#", "Python", "Javascript"]	
 }
