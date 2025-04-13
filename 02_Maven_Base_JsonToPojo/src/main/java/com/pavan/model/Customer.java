@@ -9,4 +9,10 @@ public class Customer {
 	private String lastName;
 	private boolean active;
 	
+	
+	// HAS-A property
+		private Address address;
+
+		// Array property
+		private String[] languages;
 }
