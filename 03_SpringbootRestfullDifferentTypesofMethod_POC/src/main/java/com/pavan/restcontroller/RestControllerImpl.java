@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,13 @@ public class RestControllerImpl {
 	public ResponseEntity<String> updateCustomerByNo()
 	{
 		return new ResponseEntity<String>("Patch-method of the Customer", HttpStatus.OK);
+	}
+	
+	
+	@PutMapping(value="/update")
+	public ResponseEntity<String> updateCustomer()
+	{
+		return new ResponseEntity<String>("Put-Method of the customer", HttpStatus.OK);
 	}
 
 }
