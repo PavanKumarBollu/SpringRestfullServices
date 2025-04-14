@@ -35,14 +35,12 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 	public Tourist fetchTouristById(Integer id) {
 		
 		Optional<Tourist> optional = repo.findById(id);
-		if(optional.isPresent())
-		{
-			return optional.get();
-			
-		}else
-		{
-			throw new TouristNotFoundException("Tourist Not found with the given id : " + id);
-		}
+		/*
+		 * if(optional.isPresent()) { return optional.get();
+		 * 
+		 * }else { throw new
+		 * TouristNotFoundException("Tourist Not found with the given id : " + id); }
+		 */
 		
 	}
 
