@@ -15,6 +15,7 @@ public class RequestParamImpl {
 	public ResponseEntity<String> customer(@RequestParam(defaultValue = "10", required = false) Integer id,
 			@RequestParam(defaultValue = "Pavan", required = false) String name) {
 		String body = "The Given Id : " + id + " And Name Is : " + name;
+//		logic with the collected details form the user
 		return new ResponseEntity<String>(body, HttpStatus.OK);
 	}
 
