@@ -1,6 +1,7 @@
 package com.pavan.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +22,12 @@ public class TouristController {
 	@PostMapping(value="/register")
 	public ResponseEntity<String> enrollTourist( @RequestBody Tourist tourist)
 	{
-		service.RegisterTourist(tourist);
-		return null;
+		try {
+			String result = service.RegisterTourist(tourist);
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>("Problem in tourist enrollment", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	
