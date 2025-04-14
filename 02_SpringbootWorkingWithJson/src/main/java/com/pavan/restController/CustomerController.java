@@ -37,6 +37,7 @@ public class CustomerController {
 		return entity;
 	}
 	
+	@PostMapping(value="/save")
 	public ResponseEntity<String> saveEmployee(@RequestBody Customer customer)
 	{
 		String body = "Customer Registerd with id:"+10;
