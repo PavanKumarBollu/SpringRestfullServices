@@ -20,7 +20,7 @@ public class PathVariableImpl {
 	}
 	
 	@PostMapping(value="/update/{name}/addr/{address}/sal/{salary}")
-	public ResponseEntity<String> updateEmployee(String name, String address, double salary)
+	public ResponseEntity<String> updateEmployee(@PathVariable String name, @PathVariable String address, @PathVariable double salary)
 	{
 		String body ="Name : " + name + " Address : " + address + " salaray : " + salary;
 		return new ResponseEntity<String>(body, HttpStatus.OK);
