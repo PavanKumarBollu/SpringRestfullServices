@@ -27,12 +27,10 @@ public class TouristController {
 
 	@PostMapping(value = "/register")
 	public ResponseEntity<String> enrollTourist(@RequestBody Tourist tourist) {
-		try {
-			String result = service.RegisterTourist(tourist);
-			return new ResponseEntity<String>(result, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<String>("Problem in tourist enrollment", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+
+		String result = service.RegisterTourist(tourist);
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+
 	}
 
 	@GetMapping(value = "/findAll")
@@ -79,7 +77,7 @@ public class TouristController {
 	}
 
 	@DeleteMapping("/delete/{tId}")
-	public ResponseEntity<String> deleteTouristById(@PathVariable(name="tId") Integer id) {
+	public ResponseEntity<String> deleteTouristById(@PathVariable(name = "tId") Integer id) {
 		try {
 			String deleteTouristById = service.DeleteTouristById(id);
 			return new ResponseEntity<String>(deleteTouristById, HttpStatus.OK);

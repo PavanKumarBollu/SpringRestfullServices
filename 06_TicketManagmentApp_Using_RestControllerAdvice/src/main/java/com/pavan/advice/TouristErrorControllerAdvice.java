@@ -22,6 +22,12 @@ public class TouristErrorControllerAdvice {
 	}
 	
 	
-	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorDetails> handleAllProblems(TouristNotFoundException te)
+	{
+		System.out.println("TouristErrorControllerAdvice.handleAllProblems()");
+		return new ResponseEntity<ErrorDetails>(new ErrorDetails(LocalDateTime.now(), te.getMessage(), "Some Problem In Execution"),
+				HttpStatus.NOT_FOUND);
+	}
 
 }
