@@ -66,9 +66,15 @@ public class TouristController {
 	}
 	
 	@PatchMapping(value="/modifyBudget/{tId}/{hike}")
-	public ResponseEntity<String> modifyTouristBudgetById(Integer id, Float hikeAmt)
+	public ResponseEntity<String> modifyTouristBudgetById(@PathVariable(name = "tId") Integer id, @PathVariable(name="hike") Float hikeAmt)
 	{
-		
+		try
+		{
+			String result = service.updateTouristById(id, hikeAmt);
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
 	}
 	 
 	
