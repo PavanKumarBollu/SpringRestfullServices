@@ -23,11 +23,18 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 
 	@Override
 	public List<Tourist> findAllTourist() {
+		List<Tourist> list = (List<Tourist>) repo.findAll();
+				
+//		list.sort((t1,t2)->t1.getTid().compareTo(t2.getTid()));
+		
 		return null;
 	}
 
 	@Override
 	public Tourist fetchTouristById(Integer id) {
+		
+		
+		
 		return null;
 	}
 
