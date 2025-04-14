@@ -2,6 +2,7 @@ package com.pavan.restcontroller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,12 @@ public class RestControllerImpl {
 	public ResponseEntity<String> updateCustomer()
 	{
 		return new ResponseEntity<String>("Put-Method of the customer", HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value="/delete")
+	public ResponseEntity<String> deleteCustomer()
+	{
+		return new ResponseEntity<String>("Delete-method of the Customer", HttpStatus.OK);
 	}
 
 }
