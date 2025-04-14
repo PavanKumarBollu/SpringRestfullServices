@@ -9,6 +9,6 @@ public interface ITouristMgmtService {
 	public List<Tourist> findAllTourist();
 	public Tourist fetchTouristById(Integer id);
 	public String updateTouristByDetails(Tourist t);
-	public String updateTouristById(Integer id);
+	public String updateTouristById(Integer id,float hikePercent);
 	public String DeleteTouristById(Integer id);
 }

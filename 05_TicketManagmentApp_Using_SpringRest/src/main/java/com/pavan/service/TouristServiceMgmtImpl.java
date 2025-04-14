@@ -59,7 +59,14 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 	}
 
 	@Override
-	public String updateTouristById(Integer id) {
+	public String updateTouristById(Integer id, float hikePercent) {
+		
+		Optional<Tourist> optional = repo.findById(id);
+		if(optional.isPresent())
+		{
+			Tourist tourist = optional.get();
+			tourist.setBudget(tourist.getBudget() + );
+		}
 		return null;
 	}
 
