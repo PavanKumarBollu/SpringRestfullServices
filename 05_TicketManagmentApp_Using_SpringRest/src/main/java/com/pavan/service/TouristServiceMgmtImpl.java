@@ -15,8 +15,7 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 
 	@Autowired
 	private ITouristRepo repo;
-	
-	
+
 	@Override
 	public String RegisterTourist(Tourist tourist) {
 		Tourist t = repo.save(tourist);
@@ -26,22 +25,25 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 	@Override
 	public List<Tourist> findAllTourist() {
 		List<Tourist> list = (List<Tourist>) repo.findAll();
-				
-		list.sort((t1,t2)->t1.getTid().compareTo(t2.getTid()));
+
+		list.sort((t1, t2) -> t1.getTid().compareTo(t2.getTid()));
 		return list;
 	}
 
 	@Override
 	public Tourist fetchTouristById(Integer id) {
-		
-		Optional<Tourist> optional = repo.findById(id);
+
 		/*
-		 * if(optional.isPresent()) { return optional.get();
+		 * Optional<Tourist> optional = repo.findById(id);
 		 * 
-		 * }else { throw new
+		 * if (optional.isPresent()) { return optional.get();
+		 * 
+		 * } else { throw new
 		 * TouristNotFoundException("Tourist Not found with the given id : " + id); }
 		 */
 		
+		return repo.findById(id).orElseThrow(()-> new TouristNotFoundException("Tourist Not found with the given id : " + id));
+
 	}
 
 	@Override
