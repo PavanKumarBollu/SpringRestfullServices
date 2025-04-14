@@ -13,7 +13,7 @@ public class RequestParamImpl {
 	
 	
 	@GetMapping(value="/user")
-	public ResponseEntity<String> customer( @RequestParam Integer id,  @RequestParam String name)
+	public ResponseEntity<String> customer( @RequestParam(defaultValue = "10", required  = false) Integer id,  @RequestParam String name)
 	{
 		String body = "The Given Id : " +id+ " And Name Is : " + name;
 		return new ResponseEntity<String>(body, HttpStatus.OK);
