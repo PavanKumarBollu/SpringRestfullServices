@@ -31,6 +31,12 @@ public class TouristController {
 	}
 	
 	
+	public ResponseEntity<?> displayAllTourists()
+	{
+		return null;
+	}
+	
+	
 	
 	
 	

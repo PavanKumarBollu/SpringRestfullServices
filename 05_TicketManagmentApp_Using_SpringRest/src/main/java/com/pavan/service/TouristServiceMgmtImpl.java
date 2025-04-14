@@ -26,7 +26,7 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 		List<Tourist> list = (List<Tourist>) repo.findAll();
 				
 		list.sort((t1,t2)->t1.getTid().compareTo(t2.getTid()));
-		return null;
+		return list;
 	}
 
 	@Override
