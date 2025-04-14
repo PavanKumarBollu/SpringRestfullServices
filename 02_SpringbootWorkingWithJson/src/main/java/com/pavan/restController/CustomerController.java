@@ -20,7 +20,7 @@ import com.pavan.model.Customer;
 @RequestMapping(value="/api/customer")
 public class CustomerController {
 	
-	@GetMapping(value="/report/${id}")
+	@GetMapping(value="/report/{id}")
 	public ResponseEntity<Customer> showAllCustomer(@PathVariable Integer id)
 	{
 		// get from database
@@ -41,6 +41,7 @@ public class CustomerController {
 	@PostMapping(value="/save")
 	public ResponseEntity<String> saveEmployee(@RequestBody Customer customer)
 	{
+		System.out.println(customer);
 		String body = "Customer Registerd with id:"+10;
 		return new ResponseEntity<String>(body, HttpStatus.OK);
 	}
