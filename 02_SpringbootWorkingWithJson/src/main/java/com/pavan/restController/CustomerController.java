@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class CustomerController {
 		customer.setPhoneNumbers(Set.of(9994445556L, 994349845L, 98765678L));
 		customer.setIdDetails(Map.of("adhar", 99453123432L, "panNo", "DOOPQRCL12"));
 		customer.setCompany(new Company("MI", "IPL", "Mumbai", 45));
+		ResponseEntity<Customer> entity = new ResponseEntity<Customer>(customer, HttpStatus.OK);
 		
 		return entity;
 	}
