@@ -17,7 +17,8 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 	
 	@Override
 	public String RegisterTourist(Tourist tourist) {
-		return null;
+		Tourist t = repo.save(tourist);
+		return "Tourist Registerd with the id :: " + t.getTid();
 	}
 
 	@Override
