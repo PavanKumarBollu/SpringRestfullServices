@@ -17,4 +17,10 @@ public class PathVariableImpl {
 		// Logic with the collected values
 		return new ResponseEntity<String>(body, HttpStatus.OK);
 	}
+	
+	public ResponseEntity<String> updateEmployee(String name, String address, double salary)
+	{
+		String body ="Name : " + name + " Address : " + address + " salaray : " + salary;
+		return new ResponseEntity<String>(body, HttpStatus.OK);
+	}
 }
