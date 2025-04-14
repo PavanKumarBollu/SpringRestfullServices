@@ -59,6 +59,7 @@ public class TouristController {
 	@PutMapping(value = "/modify")
 	public ResponseEntity<String> modifyTourist(@RequestBody Tourist tourist) {
 		try {
+			System.out.println(tourist.getTid());
 			String touristByDetails = service.updateTouristByDetails(tourist);
 			return new ResponseEntity<String>(touristByDetails, HttpStatus.OK);
 		} catch (Exception e) {
