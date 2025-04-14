@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -76,7 +77,8 @@ public class TouristController {
 		}
 	}
 
-	public ResponseEntity<String> deleteTouristById(Integer id) {
+	@DeleteMapping("/delete/{tId}")
+	public ResponseEntity<String> deleteTouristById(@PathVariable(name="tId") Integer id) {
 		try {
 			String deleteTouristById = service.DeleteTouristById(id);
 			return new ResponseEntity<String>(deleteTouristById, HttpStatus.OK);
