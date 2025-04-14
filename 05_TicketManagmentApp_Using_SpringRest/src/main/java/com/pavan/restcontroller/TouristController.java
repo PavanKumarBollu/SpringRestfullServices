@@ -1,7 +1,10 @@
 package com.pavan.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +37,13 @@ public class TouristController {
 	@GetMapping(value="/findAll")
 	public ResponseEntity<?> displayAllTourists()
 	{
-		return null;
+		try {
+			List<Tourist> list = service.findAllTourist();
+			return new ResponseEntity<List<Tourist>>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			
+			return new ResponseEntity<String>("Problem in fetching tourist", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	
