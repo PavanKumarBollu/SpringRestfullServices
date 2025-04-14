@@ -35,13 +35,10 @@ public class TouristController {
 
 	@GetMapping(value = "/findAll")
 	public ResponseEntity<?> displayAllTourists() {
-		try {
+		
 			List<Tourist> list = service.findAllTourist();
 			return new ResponseEntity<List<Tourist>>(list, HttpStatus.OK);
-		} catch (Exception e) {
-
-			return new ResponseEntity<String>("Problem in fetching tourist", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		
 	}
 
 	@GetMapping(value = "/find/{tId}")
@@ -56,34 +53,23 @@ public class TouristController {
 
 	@PutMapping(value = "/modify")
 	public ResponseEntity<String> modifyTourist(@RequestBody Tourist tourist) {
-		try {
-			System.out.println(tourist.getTid());
+		
 			String touristByDetails = service.updateTouristByDetails(tourist);
 			return new ResponseEntity<String>(touristByDetails, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
-		}
+		
 	}
 
 	@PatchMapping(value = "/modifyBudget/{tId}/{hike}")
 	public ResponseEntity<String> modifyTouristBudgetById(@PathVariable(name = "tId") Integer id,
 			@PathVariable(name = "hike") Float hikeAmt) {
-		try {
 			String result = service.updateTouristById(id, hikeAmt);
 			return new ResponseEntity<String>(result, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
-		}
 	}
 
 	@DeleteMapping("/delete/{tId}")
 	public ResponseEntity<String> deleteTouristById(@PathVariable(name = "tId") Integer id) {
-		try {
 			String deleteTouristById = service.DeleteTouristById(id);
 			return new ResponseEntity<String>(deleteTouristById, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
-		}
 	}
 
 }
