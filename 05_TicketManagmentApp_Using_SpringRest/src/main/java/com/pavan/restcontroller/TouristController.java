@@ -47,6 +47,17 @@ public class TouristController {
 	}
 	
 	
+	public ResponseEntity<?> findTouristById(Integer id)
+	{
+		try {
+			Tourist tourist = service.fetchTouristById(id);
+			return new ResponseEntity<Tourist> (tourist,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	
 	
 	
 	

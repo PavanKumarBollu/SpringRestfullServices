@@ -1,11 +1,13 @@
 package com.pavan.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pavan.dao.ITouristRepo;
+import com.pavan.exception.TouristNotFoundException;
 import com.pavan.model.Tourist;
 
 @Service
@@ -32,9 +34,16 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 	@Override
 	public Tourist fetchTouristById(Integer id) {
 		
+		Optional<Tourist> optional = repo.findById(id);
+		if(optional.isPresent())
+		{
+			return optional.get();
+			
+		}else
+		{
+			throw new TouristNotFoundException("Tourist Not found with the given id : " + id);
+		}
 		
-		
-		return null;
 	}
 
 	@Override
