@@ -6,7 +6,9 @@ import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +19,7 @@ import com.pavan.model.Customer;
 @RequestMapping(value="/api/customer")
 public class CustomerController {
 	
+	@GetMapping(value="/report/${id}")
 	public ResponseEntity<Customer> showAllCustomer(@PathVariable Integer id)
 	{
 		// get from database
@@ -31,8 +34,16 @@ public class CustomerController {
 		customer.setIdDetails(Map.of("adhar", 99453123432L, "panNo", "DOOPQRCL12"));
 		customer.setCompany(new Company("MI", "IPL", "Mumbai", 45));
 		ResponseEntity<Customer> entity = new ResponseEntity<Customer>(customer, HttpStatus.OK);
-		
 		return entity;
 	}
+	
+	public ResponseEntity<String> saveEmployee(@RequestBody Customer customer)
+	{
+		String body = "Customer Registerd with id:"+10;
+		return new ResponseEntity<String>(body, HttpStatus.OK);
+	}
+	
+	
 
 }
+ 
