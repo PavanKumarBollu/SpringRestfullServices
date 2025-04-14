@@ -41,14 +41,21 @@ public class TouristServiceMgmtImpl implements ITouristMgmtService {
 		 * } else { throw new
 		 * TouristNotFoundException("Tourist Not found with the given id : " + id); }
 		 */
-		
-		return repo.findById(id).orElseThrow(()-> new TouristNotFoundException("Tourist Not found with the given id : " + id));
+
+		return repo.findById(id)
+				.orElseThrow(() -> new TouristNotFoundException("Tourist Not found with the given id : " + id));
 
 	}
 
 	@Override
 	public String updateTouristByDetails(Tourist t) {
-		return null;
+		Optional<Tourist> optional = repo.findById(t.getTid());
+		if (optional.isPresent()) {
+			repo.save(t);
+			return "Tourist with the id ::" + t.getTid() + " updated";
+		} else {
+			throw new TouristNotFoundException("tourist with the id:: " + t.getTid() + " not available for updation");
+		}
 	}
 
 	@Override
